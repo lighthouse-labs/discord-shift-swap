@@ -4,4 +4,4 @@
 // app.listen(port, () => console.log(`Bot running on http://127.0.0.1:${port}`));
 
 const http = require("http");
-http.createServer((_, res) => res.end("ivon giveaways online")).listen(4001)
+http.createServer((_, res) => res.end("shift swap bot online")).listen(4001)
