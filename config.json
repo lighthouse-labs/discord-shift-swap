@@ -1,5 +1,5 @@
 {
-  "token": "process.env.MTAzNjY4OTUxMTkzMDkyNTEyOA.GK4_Q0.uJ5hnUhlA63SrjerUkFfP3lmrXAHF4-v12rGHQ", 
+  "token": "process.env.TOKEN", 
   "bug": "993594724982214806", 
   "prefix": "/", 
   "everyoneMention": false, 
