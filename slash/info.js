@@ -25,7 +25,7 @@ client.guilds.cache.forEach((guild) => {
       )
   
   let pembed = new MessageEmbed()
-    .setAuthor({name: "IVON", iconURL: "https://i.imgur.com/JkHM4c3.png" })
+    .setAuthor({name: "Shift Swap", iconURL: "https://i.imgur.com/JkHM4c3.png" })
     .setTitle('Information')
     .setColor('#2F3136')
     .setThumbnail(process.env.THUMBNAIL)

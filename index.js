@@ -1,9 +1,10 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({ intents: 7753 });
 const fs = require("fs");
-const config = require("./config.json");
+require("dotenv").config();
+// const config = require("./config.json");
 const host = require("./host");
-client.config = config;
+// client.config = config;
 
 // Initialise discord giveaways
 const { GiveawaysManager } = require("discord-giveaways");
@@ -11,13 +12,13 @@ client.giveawaysManager = new GiveawaysManager(client, {
   storage: "./storage/giveaways.json",
   default: {
     botsCanWin: false,
-    embedColor: "#2F3136",
+    embedColor: "#012D3D",
     reaction: "🎉",
     lastChance: {
       enabled: true,
       content: `📛 | **Last chance to enter**`,
       threshold: 5000,
-      embedColor: '#2F3136'
+      embedColor: '#012D3D'
     }
   }
 });
@@ -88,13 +89,13 @@ client.on("messageCreate", (message) => {
 
     if (message.mentions.has(client.user.id)) {
       const botmention = new Discord.MessageEmbed()
-      .setColor('#2F3136')
+      .setColor('#012D3D')
       .setDescription('▶ **My Prefix:** `-` \n▶ **You can see my all commands type:** `-help`\n▶ **All the giveawy commands are availble on Slash**')
         message.reply({embeds: [botmention]});
     }
 });
 
 // Login through the client
-client.login(config.token);
+// client.login(config.token);
 // Use this if you're using Replit and delete the line above.
-// client.login(process.env.TOKEN);
+client.login(process.env.TOKEN);

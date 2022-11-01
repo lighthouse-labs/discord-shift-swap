@@ -39,7 +39,7 @@ const embed = new MessageEmbed()
   .setDescription("```yaml\nHere are the general bot commands:```")
   .addFields(
     { name: 'Help'  , value: `Show the help menu.\n > **Types: \`-help\`**`, inline: true },
-    { name: 'About'  , value: `Show About Ivon.\n > **Types: \`-about\`**`, inline: true },
+    { name: 'About'  , value: `Show About Shift Swap.\n > **Types: \`-about\`**`, inline: true },
     { name: 'Invite' , value: `Get the bot's invite link.\n > **Types: \`-invite\`**`, inline: true },
     { name: 'Ping' , value: `Check the bot's ping!\n > **Types: \`-ping\` **`, inline: true },
     { name: 'Info' , value: `Check the bot's System info.\n > **Types: \`-info\` **`, inline: true },

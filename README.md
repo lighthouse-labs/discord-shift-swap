@@ -64,8 +64,8 @@ npm install
 ### Step 3 : Replace the Token and other dependencies inside [.env](https://github.com/sandarutharuneth/ivongiveaways/blob/master/.env) <br>
   ## Follow the [wiki](https://github.com/sandarutharuneth/ivongiveaways/wiki) for additional help
 ```sh
-TOEKN=Your Token goes here
-FOTTERIMG=Your Footer Image Link goes here
+TOKEN=Your Token goes here
+FOOTERIMG=Your Footer Image Link goes here
 THUMBNAIL=Your Thumbnail image link goes here
 DCBL=https://cdn.discordapp.com/attachments/477946103287906304/482738675776618497/DBL.png
 ```  

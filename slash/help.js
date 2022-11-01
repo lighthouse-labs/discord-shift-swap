@@ -40,7 +40,7 @@ module.exports = {
       .setDescription("```yaml\nHere are the general bot commands in Slash:```")
       .addFields(
         { name: 'Help', value: `Show the help menu.\n > **Types: \`/help\`**`, inline: true },
-        { name: 'About', value: `Show About Ivon.\n > **Types: \`/about\`**`, inline: true },
+        { name: 'About', value: `Show About Shift Swap.\n > **Types: \`/about\`**`, inline: true },
         { name: 'Server Info', value: `Shows server info.\n > **Types: \`/serverinfo\`**`, inline: true },
         { name: 'User Info', value: `Shows user info.\n > **Types: \`/userinfo\`**`, inline: true },
         { name: 'Invite', value: `Get the bot's invite link.\n > **Types: \`/invite\`**`, inline: true },

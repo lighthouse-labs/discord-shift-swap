@@ -1,18 +1,18 @@
 const config = require('../config.json');
 module.exports = {
   giveaway:
-    (config.everyoneMention ? "@everyone\n\n" : "") +
-    "🎉 **GIVEAWAY** 🎉",
+    (config.everyoneMention ? "@mentors\n\n" : "") +
+    "🎉 **A shift has been dropped!** 🎉",
   giveawayEnded:
-    (config.everyoneMention ? "@everyone\n\n" : "") +
-    "❌ **GIVEAWAY ENDED**",
+    (config.everyoneMention ? "@mentors\n\n" : "") +
+    "❌❌ **The shift was claimed.** ❌❌",
   drawing:  `Ends: **{timestamp}**`,
-  color: "#2F3136",
+  color: "#012D3D",
   inviteToParticipate: `React with 🎉 to participate!`,
-  winMessage: "Congratulations, {winners}! You won **{this.prize}**!",  
-  embedFooter: `{this.winnerCount} winners`,
-  noWinner: "Giveaway cancelled, no valid participations.",
+  winMessage: "Congratulations, {winners}! You've claimed **{this.prize}**!",  
+  embedFooter: `{this.winnerCount} winner`,
+  noWinner: "Nobody claimed the shift, to drop the shift again, please start again.",
   hostedBy: "Hosted by: {this.hostedBy}",
-  winners: "winner(s)",
+  winners: "winner",
   endedAt: "Ended at"
 }

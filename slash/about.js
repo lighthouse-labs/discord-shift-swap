@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
     name: 'about',
-    description: '📑 About IVON!',
+    description: '📑 About Shift Swap!',
     run: async (client, interaction) => {
     const row = new MessageActionRow()
     .addComponents(
@@ -24,7 +24,7 @@ module.exports = {
     )
     let about = new MessageEmbed()
     .setAuthor({ 
-          name: `About IVON`, 
+          name: `About Shift Swap`, 
           iconURL: client.user.displayAvatarURL() 
      })    
     .addField("Property of", "[Project Razer](https://github.com/razerinc)", true)
@@ -36,7 +36,7 @@ module.exports = {
         "Hosted On",
         "[Digital Ocean](https://www.digitalocean.com/)",
         true)
-    .setDescription(`IVON is a Discord giveaway bot that allows you to host giveaways on your servers without the need for an extra pair of hands. Unique role requirements, server join requirements, special role points, and many more options are included to help you save time and effectively run your giveaway.`)
+    .setDescription(`Shift Swap is a Discord bot that allows you to give shifts away to other mentors, or take shifts from mentors when needed!`)
     .setColor('#2F3136')
     .setTimestamp()
     .setThumbnail(process.env.THUMBNAIL)
