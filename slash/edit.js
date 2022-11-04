@@ -1,6 +1,6 @@
 module.exports = {
     name: 'edit',
-    description: '🎉 Edit a giveaway',
+    description: '🎉 Edit a shift trade',
 
     options: [
         {
@@ -32,9 +32,9 @@ module.exports = {
     run: async (client, interaction) => {
 
         // If the member doesn't have enough permissions
-        if (!interaction.member.permissions.has('MANAGE_MESSAGES') && !interaction.member.roles.cache.some((r) => r.name === "Giveaways")) {
+        if (!interaction.member.roles.cache.some((r) => r.name === "super-admin")) {
             return interaction.reply({
-                content: '❌ | You need to have the manage messages permissions to start giveaways.',
+                content: '❌ | You need to be a super-admin to edit shift trades. Please message a super-admin if you need help.',
                 ephemeral: true
             });
         }

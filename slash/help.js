@@ -8,11 +8,11 @@ module.exports = {
       .setTitle(`Commands of ${client.user.username}`)
       .setColor('#2F3136')
       .setDescription('**Please Select a category to view all its commands**')
-      .setImage("https://i.imgur.com/U7X6kPo.png")
+      .setImage("https://s3.ca-central-1.amazonaws.com/assets.lighthouselabs.ca/logos/lhl-logo.png")
       .setThumbnail(process.env.THUMBNAIL)
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 
@@ -30,7 +30,7 @@ module.exports = {
   )
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 
@@ -49,7 +49,7 @@ module.exports = {
       )
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 

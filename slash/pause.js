@@ -1,11 +1,11 @@
 module.exports = {
     name: "pause",
-    description: '⏸ Pause a giveaway',
+    description: '⏸ Pause a shift trade',
 
     options: [
         {
             name: 'giveaway',
-            description: 'The giveaway to pause (message ID or giveaway prize)',
+            description: 'The shift trade to pause (message ID or shift name)',
             type: 'STRING',
             required: true
         }
@@ -14,9 +14,9 @@ module.exports = {
     run: async (client, interaction) => {
 
         // If the member doesn't have enough permissions
-        if (!interaction.member.permissions.has('MANAGE_MESSAGES') && !interaction.member.roles.cache.some((r) => r.name === "Giveaways")) {
+        if (!interaction.member.roles.cache.some((r) => r.name === "super-admin")) {
             return interaction.reply({
-                content: '❌ | You need to have the manage messages permissions to pause giveaways.',
+                content: '❌ | You need to be a super-admin to pause shift trades. Please message a super-admin if you need help.',
                 ephemeral: true
             });
         }
