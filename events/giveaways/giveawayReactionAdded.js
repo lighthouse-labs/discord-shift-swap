@@ -21,14 +21,14 @@ module.exports = {
     // );
     
     let approved =  new MessageEmbed()
-    .setTimestamp()
-    .setColor("#012D3D")
-    .setAuthor({name: "Entry Confirmed!", iconURL: "https://i.imgur.com/Lf1IHlA.png"})    
-    .setDescription(
-      `You have entered for a chance to claim **${giveaway.prize}**! \nShift from: ${giveaway.hostedBy}`
-    )
-    .setFooter({ text: "LHL", iconURL: (process.env.FOOTERIMG) })
-    .setTimestamp()
+    // .setTimestamp()
+    // .setColor("#012D3D")
+    // .setAuthor({name: "Entry Confirmed!", iconURL: "https://i.imgur.com/Lf1IHlA.png"})    
+    // .setDescription(
+    //   `You have entered for a chance to claim the **${giveaway.prize}** shift! \nFrom: ${giveaway.hostedBy}`
+    // )
+    // .setFooter({ text: "LHL", iconURL: (process.env.FOOTERIMG) })
+    // .setTimestamp()
 
     // const lol = new MessageActionRow()
     //   .addComponents(

@@ -24,7 +24,7 @@ module.exports = {
           .setAuthor({name: "Congratulations!", iconURL: (process.env.THUMBNAIL)})
           .setThumbnail(process.env.THUMBNAIL)
           .setColor("#2F3136")
-          .setDescription(`Hello there ${member.user}\n ${giveaway.hostedBy} rerolled ${giveaway.prize} and you have claimed won it! \nPlease coordinate with them to change the schedule.`)
+          .setDescription(`Hello there ${member.user}\n ${giveaway.hostedBy} rerolled ${giveaway.prize} and you have won it! \nPlease make sure they change the initials accordingly in the schedule.`)
           .setTimestamp()
           .setFooter({
             text: "LHL", 
