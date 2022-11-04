@@ -2,6 +2,6 @@
   "token": "process.env['TOKEN']", 
   "bug": "993594724982214806", 
   "prefix": "/", 
-  "everyoneMention": true, 
+  "everyoneMention": false, 
   "hostedBy": true 
 }
