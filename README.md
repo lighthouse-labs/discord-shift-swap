@@ -43,14 +43,15 @@ THUMBNAIL=This will show up as the thumbnail of each embed when called, it is se
 DCBL=https://cdn.discordapp.com/attachments/477946103287906304/482738675776618497/DBL.png #This is a default Discord Bot List logo.
 ```  
 ### Step 5: Invite the bot.
-### - In the Discord developer portal, go to the bot > 0Auth2 > URL generator
-### - Add 'identity' and 'bot'.
-### - Select the redirect URL added in step 3.
-### - For premissions in 'General' add 'Read Messages/View Channels
-### - For permissions in 'Test' add 'Send messages', 'Manage Messages', 'Embed Links', 'Attach Files', 'Read Message History', 'Mention everyone', 'Use External Emojis', 'Add Reactions', 'Use Slash Commands'.
-### - Copy the URL at the bottom and paste it in a browser.
-### - Follow the prompts to invite it to one of our test servers.
-
+```
+- In the Discord developer portal, go to the bot > 0Auth2 > URL generator
+- Add 'identity' and 'bot'.
+- Select the redirect URL added in step 3.
+- For premissions in 'General' add 'Read Messages/View Channels
+- For permissions in 'Test' add 'Send messages', 'Manage Messages', 'Embed Links', 'Attach Files', 'Read Message History', 'Mention everyone', 'Use External Emojis', 'Add Reactions', 'Use Slash Commands'.
+- Copy the URL at the bottom and paste it in a browser.
+- Follow the prompts to invite it to one of our test servers.
+```
 ### Step 6: Now run the bot.
 
 ### Run with node
