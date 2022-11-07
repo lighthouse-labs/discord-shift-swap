@@ -21,7 +21,7 @@ module.exports = {
       .setColor('#2F3136')
       .setDescription("```yaml\nHere are the giveaway commands:```")
       .addFields(
-    { name: 'Create / Start'  , value: `Start a giveaway in your guild!\n > **Types: \`/start\`**`, inline: true },
+    { name: 'Trade'  , value: `Start a giveaway in your guild!\n > **Types: \`/trade\`**`, inline: true },
     { name: 'Edit' , value: `Edit an already running giveaway!\n > **Types: \`/edit\`**`, inline: true },
     { name: 'End' , value: `End an already running giveaway!\n > **Types: \`/end\`**`, inline: true },
     { name: 'Pause' , value: `Pause an already running giveaway!\n > **Type: \`/pause\`**`, inline: true },
