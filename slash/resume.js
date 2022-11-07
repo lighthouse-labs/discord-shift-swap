@@ -5,7 +5,7 @@ module.exports = {
     options: [
         {
             name: 'giveaway',
-            description: 'The shift trade to resume (message ID or shift name)',
+            description: 'The shift trade to resume. (message ID or shift name)',
             type: 'STRING',
             required: true
         }

@@ -20,18 +20,21 @@ Windows
 # https://nodejs.org/en/blog/release/v16.0.0/ get node.js
 npm install 
 ```
+
 ### Step 2: You may need to add the bot to your hosts file.
-### Open your hosts file and add:
-```sh
+```
+Open your hosts file and add:
+sh
 172.0.0.1   discord.local
 ```
 
 ### Step 3: Create a bot [Here](https://discord.com/developers) <br> <br>
-### - You'll need to craete a new applications in the top right.
-### - Click on bot and click 'add bot'
-### - Copy the token. Once you copy it, it will dissapear, so if you lose it, you'll have to reset the token.
-### - In the 0Auth2 tab, you'll need a redirect. add this one to run it locally: http://localhost:8080/oauth/token
-➖
+```
+- You'll need to craete a new applications in the top right.
+- Click on bot and click 'add bot'
+- Copy the token. Once you copy it, it will dissapear, so if you lose it, you'll have to reset the token.
+- In the 0Auth2 tab, you'll need a redirect. add this one to run it locally: http://localhost:8080/oauth/token
+```
 <b>
   
 

@@ -29,25 +29,6 @@ module.exports = {
     // )
     // .setFooter({ text: "LHL", iconURL: (process.env.FOOTERIMG) })
     // .setTimestamp()
-
-    // const lol = new MessageActionRow()
-    //   .addComponents(
-    //     new MessageButton()
-    //       .setLabel("Vote Me")
-    //       .setStyle("LINK")
-    //       .setURL("https://discordbotlist.com/bots/ivon/upvote")
-    //       .setEmoji('974160940197113916'),
-    //     new MessageButton()
-    //       .setLabel('Patreon')
-    //       .setStyle('LINK')
-    //       .setEmoji('1001122523175465061')
-    //       .setURL("https://www.patreon.com/projectrazer"),
-    //     new MessageButton()
-    //       .setLabel("Invite Me")
-    //       .setStyle("LINK")
-    //       .setURL("https://discord.com/api/oauth2/authorize?client_id=973436715819745290&permissions=406881561681&scope=bot%20applications.commands")
-    //       .setEmoji('984296691794583582'),
-    // );
     
    let denied =  new MessageEmbed()
     .setTimestamp()
@@ -56,7 +37,7 @@ module.exports = {
     .setDescription(
       `You could not be entered to claim **${giveaway.prize}**. \nPlease message an admin if you get this message. \n Shift from: ${giveaway.hostedBy}`
     )
-    .setFooter({ text: "LHL", iconURL: (process.env.FOOTERIMG) })
+    .setFooter({ text: "Lighthouse Labs", iconURL: (process.env.FOOTERIMG) })
 
     let client = messageReaction.message.client
     if (reactor.user.bot) return;

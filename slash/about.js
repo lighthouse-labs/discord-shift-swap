@@ -28,5 +28,5 @@ module.exports = {
     })
     
     interaction.reply({ embeds: [about], components: [row]});
-}
+    }
 }
