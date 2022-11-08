@@ -14,9 +14,9 @@ module.exports = {
     run: async (client, interaction) => {
 
         // If the member doesn't have enough permissions
-        if (!interaction.member.roles.cache.some((r) => r.name === "super-admin")) {
+        if (!interaction.member.roles.cache.some((r) => r.name === "admin")) {
             return interaction.reply({
-                content: '❌ | You need to be a super-admin to reroll shift trades. Please message a super-admin if you need help.',
+                content: '❌ | You need to be a admin to reroll shift trades. Please message a admin if you need help.',
                 ephemeral: true
             });
         }
