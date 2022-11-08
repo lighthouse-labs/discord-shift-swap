@@ -8,7 +8,7 @@ module.exports = {
   options: [
     {
       name: 'shift',
-      description: 'What shift do you need to give away? Please put it in a format like this: **Nov 1st, 5-8pm EST**, so that it includes the date, time and timezone.',
+      description: 'What shift do you need to give away? Please put it in a format like this: **Nov 1st, 5-8pm EST**.',
       type: 'STRING',
       required: true
     },
