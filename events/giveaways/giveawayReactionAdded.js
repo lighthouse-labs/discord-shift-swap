@@ -1,7 +1,8 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
+
 module.exports = {
-  async execute(trade, reactor, messageReaction) {
- 
+  async execute(trade, reactor, messageReaction,) {
+
   let approved =  new MessageEmbed()
 
   let denied =  new MessageEmbed()
@@ -15,12 +16,11 @@ module.exports = {
 
     let client = messageReaction.message.client
     if (reactor.user.bot) return;
-    if(trade.extraData) {
+    if (trade.extraData) {
       if (trade.extraData.role !== "null" && !reactor.roles.cache.get(trade.extraData.role)){ 
         messageReaction.users.remove(reactor.user);
         return reactor.send({
           embeds: [denied],
-          components: [lol]
         }).catch(e => {})
       }
 
