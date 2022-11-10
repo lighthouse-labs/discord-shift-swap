@@ -4,7 +4,7 @@ module.exports = {
 
     options: [
         {
-            name: 'giveaway',
+            name: 'shift',
             description: 'The shift trade to resume. (message ID or shift name)',
             type: 'STRING',
             required: true
@@ -16,41 +16,41 @@ module.exports = {
         // If the member doesn't have enough permissions
         if (!interaction.member.roles.cache.some((r) => r.name === "admin")) {
             return interaction.reply({
-                content: '❌ | You need to be a admin to resume shift trades. Please message a admin if you need help.',
+                content: '❌ | You need to be an admin to resume shift trades. Please message an admin if you need help.',
                 ephemeral: true
             });
         }
 
-        const query = interaction.options.getString('giveaway');
+        const query = interaction.options.getString('shift');
 
-        // try to find the giveaway with prize alternatively with ID
-        const giveaway =
-            // Search with giveaway prize
+        // try to find the shift with prize alternatively with ID
+        const shift =
+            // Search with shift prize
             client.giveawaysManager.giveaways.find((g) => g.prize === query && g.guildId === interaction.guild.id) ||
-            // Search with giveaway ID
+            // Search with shift ID
             client.giveawaysManager.giveaways.find((g) => g.messageId === query && g.guildId === interaction.guild.id);
 
-        // If no giveaway was found
-        if (!giveaway) {
+        // If no shift was found
+        if (!shift) {
             return interaction.reply({
-                content: 'Unable to find a giveaway for `' + query + '`.',
+                content: 'Unable to find a shift trade for `' + query + '`.',
                 ephemeral: true
             });
         }
 
-        if (!giveaway.pauseOptions.isPaused) {
+        if (!shift.pauseOptions.isPaused) {
             return interaction.reply({
-                content: `**[This giveaway](https://discord.com/channels/${giveaway.guildId}/${giveaway.channelId}/${giveaway.messageId})**  is not paused!`,
+                content: `**[This shift trade](https://discord.com/channels/${shift.guildId}/${shift.channelId}/${shift.messageId})**  is not paused!`,
                 ephemeral: true
             });
         }
 
-        // Edit the giveaway
-        client.giveawaysManager.unpause(giveaway.messageId)
+        // Edit the shift
+        client.giveawaysManager.unpause(shift.messageId)
             // Success message
             .then(() => {
                 // Success message
-                interaction.reply(`**[This giveaway](https://discord.com/channels/${giveaway.guildId}/${giveaway.channelId}/${giveaway.messageId})** has been successfully resumed!`);
+                interaction.reply(`**[This shift trade](https://discord.com/channels/${shift.guildId}/${shift.channelId}/${shift.messageId})** has been successfully resumed!`);
             })
             .catch((e) => {
                 interaction.reply({

@@ -4,26 +4,26 @@ module.exports = {
 
     options: [
         {
-            name: 'giveaway',
-            description: 'The giveaway to end (message ID)',
+            name: 'shift',
+            description: 'The shift trade period to end (message ID)',
             type: 'STRING',
             required: true
         },
         {
             name: 'duration',
-            description: 'Setting time of mentioned giveaway. Eg. 1h sets the current giveaway to end after an hour!',
+            description: 'Setting time of mentioned shift trade period. Eg. 1h',
             type: 'STRING',
             required: true
         },
         {
             name: 'winners',
-            description: 'How many winners the giveaway should have',
+            description: 'How many winners the shift should have',
             type: 'INTEGER',
             required: true
         },
         {
             name: 'prize',
-            description: 'What the prize of the giveaway should be',
+            description: 'What the prize of the shift should be',
             type: 'STRING',
             required: true
         }
@@ -34,11 +34,11 @@ module.exports = {
         // If the member doesn't have enough permissions
         if (!interaction.member.roles.cache.some((r) => r.name === "admin")) {
             return interaction.reply({
-                content: '❌ | You need to be a admin to edit shift trades. Please message a admin if you need help.',
+                content: '❌ | You need to be an admin to edit shift trades. Please message an admin if you need help.',
                 ephemeral: true
             });
         }
-        const gid = interaction.options.getString('giveaway');
+        const gid = interaction.options.getString('shift');
         const time = interaction.options.getString('duration');
         const winnersCount = interaction.options.getInteger('winners');
         const prize = interaction.options.getString('prize');
@@ -46,9 +46,9 @@ module.exports = {
         await interaction.deferReply({
          ephemeral: true
         })
-        // Edit the giveaway
+        // Edit the shift
         try {
-        await client.giveawaysManager.edit(gid, {
+        await client.shiftsManager.edit(gid, {
             newWinnersCount: winnersCount,
             newPrize: prize,
             addTime: time
@@ -56,13 +56,13 @@ module.exports = {
         } catch(e) {
 return interaction.editReply({
             content:
-                `No giveaway found with the given message ID: \`${gid}\``,
+                `No shift trade found with the given message ID: \`${gid}\``,
             ephemeral: true
         });
         }
         interaction.editReply({
             content:
-                `This giveaway has now been edited!`,
+                `This shift trade has now been edited!`,
             ephemeral: true
         });
     }
