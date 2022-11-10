@@ -1,7 +1,7 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
 
 module.exports = {
-  async execute(trade, reactor, messageReaction,) {
+  async execute(trade, reactor, messageReaction) {
 
   let approved =  new MessageEmbed()
 
