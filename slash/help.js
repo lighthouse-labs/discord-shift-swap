@@ -8,11 +8,11 @@ module.exports = {
       .setTitle(`Commands of ${client.user.username}`)
       .setColor('#2F3136')
       .setDescription('**Please Select a category to view all its commands**')
-      .setImage("https://i.imgur.com/U7X6kPo.png")
+      .setImage("https://s3.ca-central-1.amazonaws.com/assets.lighthouselabs.ca/logos/lhl-logo.png")
       .setThumbnail(process.env.THUMBNAIL)
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 
@@ -21,16 +21,16 @@ module.exports = {
       .setColor('#2F3136')
       .setDescription("```yaml\nHere are the giveaway commands:```")
       .addFields(
-    { name: 'Create / Start'  , value: `Start a giveaway in your guild!\n > **Types: \`/start\`**`, inline: true },
-    { name: 'Edit' , value: `Edit an already running giveaway!\n > **Types: \`/edit\`**`, inline: true },
-    { name: 'End' , value: `End an already running giveaway!\n > **Types: \`/end\`**`, inline: true },
-    { name: 'Pause' , value: `Pause an already running giveaway!\n > **Type: \`/pause\`**`, inline: true },
-    { name: 'Reroll' , value: `Reroll an ended giveaway!\n > **Types: \`/reroll\`**`, inline: true },
-    { name: 'Resume' , value: `Resume a paused giveaway!\n > **Type: \`/resume\`**`, inline: true },
+    { name: 'Trade'  , value: `Trade a shift to another mentor!\n > **Types: \`/trade\`**`, inline: true },
+    { name: 'Edit' , value: `Edit an existing shift trade period!\n > **Types: \`/edit\`**`, inline: true },
+    { name: 'End' , value: `End an existing shift trade period!\n > **Types: \`/end\`**`, inline: true },
+    { name: 'Pause' , value: `Pause an existing shift trade period!\n > **Type: \`/pause\`**`, inline: true },
+    { name: 'Reroll' , value: `Reroll an existing shift trade period!\n > **Types: \`/reroll\`**`, inline: true },
+    { name: 'Resume' , value: `Resume an existing shift trade period!\n > **Type: \`/resume\`**`, inline: true },
   )
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 
@@ -40,16 +40,12 @@ module.exports = {
       .setDescription("```yaml\nHere are the general bot commands in Slash:```")
       .addFields(
         { name: 'Help', value: `Show the help menu.\n > **Types: \`/help\`**`, inline: true },
-        { name: 'About', value: `Show About Ivon.\n > **Types: \`/about\`**`, inline: true },
-        { name: 'Server Info', value: `Shows server info.\n > **Types: \`/serverinfo\`**`, inline: true },
-        { name: 'User Info', value: `Shows user info.\n > **Types: \`/userinfo\`**`, inline: true },
-        { name: 'Invite', value: `Get the bot's invite link.\n > **Types: \`/invite\`**`, inline: true },
+        { name: 'About', value: `Show About Shift Swap.\n > **Types: \`/about\`**`, inline: true },
         { name: 'Ping', value: `Check the bot's ping!\n > **Types: \`/ping\`**`, inline: true },
-        { name: 'System', value: `Check the bot's System info.\n > **Types: \`/info\`**`, inline: true },
       )
       .setTimestamp()
       .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
 
@@ -60,9 +56,9 @@ module.exports = {
           .setPlaceholder("Please Select a Category")
           .setDisabled(state)
           .addOptions([{
-            label: `Giveaways`,
-            value: `giveaway`,
-            description: `View all the giveaway based commands!`,
+            label: `Shift Trades`,
+            value: `trades`,
+            description: `View all the shift trade based commands!`,
             emoji: `🎉`
           },
           {

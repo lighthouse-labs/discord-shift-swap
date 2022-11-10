@@ -35,34 +35,28 @@ module.exports = {
 
     const userr = new MessageEmbed()
      .setAuthor({ name: `${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true}) })
-     .setThumbnail('https://i.imgur.com/Cbs7ljR.png') 
-     .setDescription("**Your Report Have Been Submitted!**\nCheck Your DM\nDM locked? Then check this [link](https://officialrazer.xyz/reports)")
+     .setThumbnail('https://s3.ca-central-1.amazonaws.com/assets.lighthouselabs.ca/logos/Lighthouse.png') 
+     .setDescription("**Your Report Has Been Submitted!**")
      .setColor('#2F3136')
 
     const dm = new MessageEmbed()
      .setAuthor({ name: `${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true}) })
-     .setTitle('Little Notice for you') 
-     .setDescription("By submitting the report, you're agreeing to our privacy policy and our terms of conditions at Project Razer LLC. All your reports and your user data will be recorded and stored until the casefile is done. Spam reports will result in a blacklist or permanent ban on all our products or services. Please use the report system wisely. Have a nice day and thanks for your report.")
+     .setTitle('Thank you!') 
+     .setDescription("Thank you for posting this report. This helps us monitor and keep our bot clean and working! Have a good day!")
      .setColor('#2F3136')
-    .setFooter({ text: 'Project Razer LLC', iconURL: 'https://i.imgur.com/ewa2N7p.png' })
+    .setFooter({ text: 'Lighthouse Labs', iconURL: 'https://s3.ca-central-1.amazonaws.com/assets.lighthouselabs.ca/logos/Lighthouse.png' })
 
     const row = new MessageActionRow()
        .addComponents(
     	new MessageButton()
-    .setLabel("Read Privacy Policy")
+    .setLabel("Website")
     .setStyle("LINK")
-    .setURL("https://www.officialrazer.xyz/privacy-policy")
+    .setURL("https://www.lighthouselabs.ca")
     .setEmoji('1010217251384868944'),
-    new MessageButton()
-    .setLabel("Read Terms of Service")
-    .setStyle("LINK")
-    .setEmoji('1010217248843120790')
-    .setURL("https://www.officialrazer.xyz/terms-of-use"));
+    );
 
-    
     channel.send({ embeds: [embed] });
     interaction.member.send({ embeds: [dm], components: [row] });
     interaction.reply({embeds: [userr], components: [row] });
   }
-
 };

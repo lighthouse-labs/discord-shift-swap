@@ -1,11 +1,11 @@
 module.exports = {
     name: "reroll",
-    description: '🎉 Reroll a giveaway',
+    description: '🎉 Reroll a shift trade',
 
     options: [
         {
-            name: 'giveaway',
-            description: 'The giveaway to reroll (message ID or prize)',
+            name: 'shift',
+            description: 'The shift trade to reroll. (message ID or shift name)',
             type: 'STRING',
             required: true
         }
@@ -14,42 +14,42 @@ module.exports = {
     run: async (client, interaction) => {
 
         // If the member doesn't have enough permissions
-        if (!interaction.member.permissions.has('MANAGE_MESSAGES') && !interaction.member.roles.cache.some((r) => r.name === "Giveaways")) {
+        if (!interaction.member.roles.cache.some((r) => r.name === "admin")) {
             return interaction.reply({
-                content: '❌ | You need to have the manage messages permission to reroll giveaways.',
+                content: '❌ | You need to be an admin to reroll shift trades. Please message an admin if you need help.',
                 ephemeral: true
             });
         }
 
-        const query = interaction.options.getString('giveaway');
+        const query = interaction.options.getString('shift');
 
-        // try to find the giveaway with the provided prize OR with the ID
-        const giveaway =
-            // Search with giveaway prize
+        // try to find the shift with the provided prize OR with the ID
+        const shift =
+            // Search with shift prize
             client.giveawaysManager.giveaways.find((g) => g.prize === query && g.guildId === interaction.guild.id) ||
-            // Search with giveaway ID
+            // Search with shift ID
             client.giveawaysManager.giveaways.find((g) => g.messageId === query && g.guildId === interaction.guild.id);
 
-        // If no giveaway was found
-        if (!giveaway) {
+        // If no shift was found
+        if (!shift) {
             return interaction.reply({
-                content: 'Unable to find a giveaway for `' + query + '`.',
+                content: 'Unable to find a shift trade for `' + query + '`.',
                 ephemeral: true
             });
         }
 
-        if (!giveaway.ended) {
+        if (!shift.ended) {
             return interaction.reply({
-                content: `[This Giveaway](https://discord.com/channels/${giveaway.guildId}/${giveaway.channelId}/${giveaway.messageId}) has not been ended yet`,
+                content: `[This shift trade](https://discord.com/channels/${shift.guildId}/${shift.channelId}/${shift.messageId}) has not been ended yet`,
                 ephemeral: true
             });
         }
 
-        // Reroll the giveaway
-        client.giveawaysManager.reroll(giveaway.messageId)
+        // Reroll the shift
+        client.giveawaysManager.reroll(shift.messageId)
             .then(() => {
                 // Success message
-                interaction.reply(`Rerolled **[this giveaway](https://discord.com/channels/${giveaway.guildId}/${giveaway.channelId}/${giveaway.messageId})!**`);
+                interaction.reply(`Rerolled **[this shift trade](https://discord.com/channels/${shift.guildId}/${shift.channelId}/${shift.messageId})!**`);
             })
             .catch((e) => {
                 interaction.reply({

@@ -1,18 +1,18 @@
 const config = require('../config.json');
 module.exports = {
   giveaway:
-    (config.everyoneMention ? "@everyone\n\n" : "") +
-    "🎉 **GIVEAWAY** 🎉",
+    (config.everyoneMention ? `<@&${993594724965421206}>\n\n` : "") +
+    "\n🎉 **SHIFT TRADE!** 🎉",
   giveawayEnded:
-    (config.everyoneMention ? "@everyone\n\n" : "") +
-    "❌ **GIVEAWAY ENDED**",
+    (config.everyoneMention ? `<@&${993594724965421206}>\n\n` : "") +
+    "ℹ️ **SHIFT TRADE PERIOD ENDED.** ℹ️",
   drawing:  `Ends: **{timestamp}**`,
-  color: "#2F3136",
-  inviteToParticipate: `React with 🎉 to participate!`,
-  winMessage: "Congratulations, {winners}! You won **{this.prize}**!",  
-  embedFooter: `{this.winnerCount} winners`,
-  noWinner: "Giveaway cancelled, no valid participations.",
-  hostedBy: "Hosted by: {this.hostedBy}",
-  winners: "winner(s)",
+  color: "#012D3D",
+  inviteToParticipate: `React with ✋ to participate!`,
+  winMessage: "Congratulations, {winners}! You won the **{this.prize}** shift from {this.hostedBy}! Please make sure {this.hostedBy} updates the initials accordingly in the schedule.",  
+  embedFooter: `{this.winnerCount} winner`,
+  noWinner: "Hello {this.hostedBy}. \n This trade shift period has ended and nobody claimed your shift. If you'd like to try again, you can restart the command.",
+  hostedBy: "Hosted by: {this.hostedBy}.",
+  winners: "winner",
   endedAt: "Ended at"
 }

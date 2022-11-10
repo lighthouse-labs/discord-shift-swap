@@ -12,7 +12,7 @@ module.exports = {
 		  .addField('**API Latency**', `\`\`\`ini\n[ ${Math.round(client.ws.ping)}ms ]\n\`\`\``)
 		  .setTimestamp()
                   .setFooter({
-        text: `©️ IVON`, 
+        text: `Lighthouse Labs`, 
         iconURL: (process.env.FOOTERIMG)
     })
         interaction.reply({
