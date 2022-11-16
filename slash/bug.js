@@ -15,7 +15,7 @@ module.exports = {
 
   run: async (client, interaction) => {
 
-    const channel = client.channels.cache.get(client.config.bug);
+    const channel = client.channels.cache.find(client.channels.cache.find(channel => channel.name === "moderation"));
     const bugs = interaction.options.getString('describe');
     const embed = new MessageEmbed()
       .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
