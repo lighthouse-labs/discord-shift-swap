@@ -1,6 +1,6 @@
 ---
 name: Bug Fixes
-about: Describe this issue template's purpose here.
+about: Template for addressing bug fixes.
 title: BUG
 labels: ''
 assignees: ''
