@@ -3,7 +3,7 @@
 
 # How to run:
 ## Hosting 
-> ⚠  This bot needs a [Node.js v16+](https://nodejs.org/en/blog/release/v16.0.0/)  runtime to function since discord.js version 13 requires node version to function. I've been using Node.js v18+.
+> ⚠  This bot needs a [Node.js v16+](https://nodejs.org/en/blog/release/v16.0.0/)  runtime to function since discord.js version 13 requires node version 16 to function. I've been using Node.js v18+.
 
 ### Step 1: Install the Dependencies:
 Linux 
@@ -22,15 +22,14 @@ npm install
 ```
 
 ### Step 2: You may need to add the bot to your hosts file.
-```
+```sh
 Open your hosts file and add:
-sh
 172.0.0.1   discord.local
 ```
 
 ### Step 3: Create a bot [Here](https://discord.com/developers) <br> <br>
 ```
-- You'll need to craete a new applications in the top right.
+- You'll need to create a new application in the top right.
 - Click on bot and click 'add bot'
 - Copy the token. Once you copy it, it will dissapear, so if you lose it, you'll have to reset the token.
 - In the 0Auth2 tab, you'll need a redirect. add this one to run it locally: http://localhost:8080/oauth/token
