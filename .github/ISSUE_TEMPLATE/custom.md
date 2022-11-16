@@ -1,5 +1,5 @@
 ---
-name: Custom issue template
+name: Bug Fixes
 about: Describe this issue template's purpose here.
 title: BUG
 labels: ''
