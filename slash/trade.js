@@ -24,8 +24,8 @@ module.exports = {
       });
     }
   
-    const tradeDuration = (ms(60000));
-    const tradeChannel = (client.channels.cache.get(process.env.TRADE));
+    const tradeDuration = ms(900000);
+    const tradeChannel = client.channels.cache.find((channel) => channel.name === "shift-changes");
     const tradeWinnerCount = (1);
     const tradePrize = interaction.options.getString('shift');
 
