@@ -1,35 +1,39 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 const messages = require("../utils/message");
-const ms = require("ms")
+const ms = require("ms");
 module.exports = {
-  name: 'trade',
-  description: '🎉 Drop a shift!',
+  name: "trade",
+  description: "🎉 Drop a shift!",
 
   options: [
     {
-      name: 'shift',
-      description: 'What shift do you need to give away? Please put it in a format like this: **Nov 1st, 5-8pm EST**.',
-      type: 'STRING',
-      required: true
+      name: "shift",
+      description:
+        "What shift do you need to give away? Please put it in a format like this: **Nov 1st, 5-8pm EST**.",
+      type: "STRING",
+      required: true,
     },
   ],
 
   run: async (client, interaction) => {
-
     // If the member doesn't have enough permissions
     if (!interaction.member.roles.cache.some((r) => r.name === "mentors")) {
       return interaction.reply({
-        content: '❌ | You need to be a mentor to start a shift swap.',
-        ephemeral: true
+        content: "❌ | You need to be a mentor to start a shift swap.",
+        ephemeral: true,
       });
     }
-  
-    const tradeDuration = ms(900000);
-    const tradeChannel = client.channels.cache.find((channel) => channel.name === "shift-changes");
-    const tradeWinnerCount = (1);
-    const tradePrize = interaction.options.getString('shift');
 
-  await interaction.deferReply({ ephemeral: true })
+    const tradeDuration = ms(1000 * 60 * 15);
+    const tradeChannel = client.channels.cache.find(
+      (channel) =>
+        channel.guildId === interaction.guildId &&
+        channel.name === "shift-changes"
+    );
+    const tradeWinnerCount = 1;
+    const tradePrize = interaction.options.getString("shift");
+
+    await interaction.deferReply({ ephemeral: true });
 
     // start giveaway
     client.giveawaysManager.start(tradeChannel, {
@@ -44,9 +48,8 @@ module.exports = {
       messages,
     });
     interaction.editReply({
-      content:
-        `You dropped your shift in ${tradeChannel}!`,
-      ephemeral: true
-    })
-  }
+      content: `You dropped your shift in ${tradeChannel}!`,
+      ephemeral: true,
+    });
+  },
 };
