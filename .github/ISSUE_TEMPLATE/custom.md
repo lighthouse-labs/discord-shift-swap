@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: Bug Fixes
+about: Template for addressing bug fixes.
 title: BUG
 labels: ''
 assignees: ''
