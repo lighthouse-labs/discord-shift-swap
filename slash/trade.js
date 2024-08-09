@@ -18,9 +18,9 @@ module.exports = {
   run: async (client, interaction) => {
     // List of roles that are allowed to perform the action
     const allowedRoles = {
-      web: "1271462921683337319",
-      data: "1271462935574609960",
-      cyber: "1271462947478044793",
+      web: "1266459443852345475",
+      data: "1266459414878228598",
+      cyber: "1266459384779640893",
     };
 
     // Check if the member has one of the allowed roles
