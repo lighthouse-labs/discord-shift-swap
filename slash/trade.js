@@ -16,20 +16,31 @@ module.exports = {
   ],
 
   run: async (client, interaction) => {
-    // If the member doesn't have enough permissions
-    if (!interaction.member.roles.cache.some((r) => r.name === "mentors")) {
+    // List of roles that are allowed to perform the action
+    const allowedRoles = {
+      web: "1271462921683337319",
+      data: "1271462935574609960",
+      cyber: "1271462947478044793",
+    };
+
+    // Check if the member has one of the allowed roles
+    const userRole = interaction.member.roles.cache.find((r) =>
+      Object.keys(allowedRoles).includes(r.name)
+    );
+
+    // If the member doesn't have any of the allowed roles
+    if (!userRole) {
       return interaction.reply({
-        content: "❌ | You need to be a mentor to start a shift swap.",
+        content:
+          "❌ | You need to have the appropriate web, data or cyber role to start a shift swap.",
         ephemeral: true,
       });
     }
 
+    const channelId = allowedRoles[userRole.name];
+    const tradeChannel = client.channels.cache.get(channelId);
+
     const tradeDuration = ms(1000 * 60 * 15);
-    const tradeChannel = client.channels.cache.find(
-      (channel) =>
-        channel.guildId === interaction.guildId &&
-        channel.name === "shift-changes"
-    );
     const tradeWinnerCount = 1;
     const tradePrize = interaction.options.getString("shift");
 
