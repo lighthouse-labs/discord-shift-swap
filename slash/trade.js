@@ -1,6 +1,7 @@
 const { MessageActionRow, MessageSelectMenu } = require("discord.js");
 const messages = require("../utils/message");
 const ms = require("ms");
+
 module.exports = {
   name: "trade",
   description: "🎉 Drop a shift!",
@@ -28,7 +29,6 @@ module.exports = {
       Object.keys(allowedRoles).includes(r.name)
     );
 
-    // If the member doesn't have any of the allowed roles
     if (userRoles.size === 0) {
       return interaction.reply({
         content:
@@ -37,33 +37,56 @@ module.exports = {
       });
     }
 
+    const tradeDurationStr = "15m"; // This is the duration string
+    const tradeDuration = ms(tradeDurationStr); // Convert to milliseconds
+
+    if (!tradeDuration || tradeDuration <= 0) {
+      return interaction.reply({
+        content: `❌ | Invalid trade duration: "${tradeDurationStr}".`,
+        ephemeral: true,
+      });
+    }
+
+    const tradeWinnerCount = 1;
+    const tradePrize = interaction.options.getString("shift");
+
     if (userRoles.size === 1) {
-      // If the user has only one relevant role, use the corresponding channel
       const userRoleName = userRoles.first().name;
       const channelId = allowedRoles[userRoleName];
       const tradeChannel = client.channels.cache.get(channelId);
 
-      // Use tradeChannel to start the giveaway
-      const tradeDuration = ms(1000 * 60 * 15);
-      const tradeWinnerCount = 1;
-      const tradePrize = interaction.options.getString("shift");
+      if (!tradeChannel) {
+        return interaction.reply({
+          content: "❌ | The corresponding channel could not be found.",
+          ephemeral: true,
+        });
+      }
 
       await interaction.deferReply({ ephemeral: true });
 
-      client.giveawaysManager.start(tradeChannel, {
-        duration: tradeDuration,
-        prize: tradePrize,
-        hostedBy: `<@${interaction.user.id}>`,
-        winnerCount: tradeWinnerCount,
-        messages,
-      });
+      // Start giveaway in the channel
+      client.giveawaysManager
+        .start(tradeChannel, {
+          duration: tradeDuration,
+          prize: tradePrize,
+          hostedBy: `<@${interaction.user.id}>`,
+          winnerCount: tradeWinnerCount,
+          messages,
+        })
+        .catch((error) => {
+          console.error("Error starting giveaway:", error);
+          interaction.editReply({
+            content:
+              "❌ | Failed to start the giveaway. Please try again later.",
+            ephemeral: true,
+          });
+        });
 
-      interaction.editReply({
+      return interaction.editReply({
         content: `You dropped your shift in ${tradeChannel}!`,
         ephemeral: true,
       });
     } else {
-      // If the user has more than one relevant role, present a choice
       const options = userRoles.map((role) => ({
         label: role.name,
         value: allowedRoles[role.name],
@@ -82,7 +105,6 @@ module.exports = {
         ephemeral: true,
       });
 
-      // Await the user's choice
       const filter = (i) =>
         i.customId === "select-channel" && i.user.id === interaction.user.id;
       const collector = interaction.channel.createMessageComponentCollector({
@@ -107,20 +129,22 @@ module.exports = {
           ephemeral: true,
         });
 
-        const tradeDuration = ms(1000 * 60 * 15);
-        const tradeWinnerCount = 1;
-        const tradePrize = interaction.options.getString("shift");
-
-        await interaction.deferReply({ ephemeral: true });
-
-        // Start giveaway
-        client.giveawaysManager.start(tradeChannel, {
-          duration: tradeDuration,
-          prize: tradePrize,
-          hostedBy: `<@${interaction.user.id}>`,
-          winnerCount: tradeWinnerCount,
-          messages,
-        });
+        client.giveawaysManager
+          .start(tradeChannel, {
+            duration: tradeDuration,
+            prize: tradePrize,
+            hostedBy: `<@${interaction.user.id}>`,
+            winnerCount: tradeWinnerCount,
+            messages,
+          })
+          .catch((error) => {
+            console.error("Error starting giveaway:", error);
+            interaction.editReply({
+              content:
+                "❌ | Failed to start the giveaway. Please try again later.",
+              ephemeral: true,
+            });
+          });
 
         interaction.editReply({
           content: `You dropped your shift in ${tradeChannel}!`,
