@@ -1,6 +1,7 @@
-const Discord = require("discord.js");
+const { MessageActionRow, MessageSelectMenu } = require("discord.js");
 const messages = require("../utils/message");
 const ms = require("ms");
+
 module.exports = {
   name: "trade",
   description: "🎉 Drop a shift!",
@@ -24,12 +25,11 @@ module.exports = {
     };
 
     // Check if the member has one of the allowed roles
-    const userRole = interaction.member.roles.cache.find((r) =>
+    const userRoles = interaction.member.roles.cache.filter((r) =>
       Object.keys(allowedRoles).includes(r.name)
     );
 
-    // If the member doesn't have any of the allowed roles
-    if (!userRole) {
+    if (userRoles.size === 0) {
       return interaction.reply({
         content:
           "❌ | You need to have the appropriate web, data or cyber role to start a shift swap.",
@@ -37,30 +37,120 @@ module.exports = {
       });
     }
 
-    const channelId = allowedRoles[userRole.name];
-    const tradeChannel = client.channels.cache.get(channelId);
+    const tradeDurationStr = "15m"; // This is the duration string
+    const tradeDuration = ms(tradeDurationStr); // Convert to milliseconds
 
-    const tradeDuration = ms(1000 * 60 * 15);
+    if (!tradeDuration || tradeDuration <= 0) {
+      return interaction.reply({
+        content: `❌ | Invalid trade duration: "${tradeDurationStr}".`,
+        ephemeral: true,
+      });
+    }
+
     const tradeWinnerCount = 1;
     const tradePrize = interaction.options.getString("shift");
 
-    await interaction.deferReply({ ephemeral: true });
+    if (userRoles.size === 1) {
+      const userRoleName = userRoles.first().name;
+      const channelId = allowedRoles[userRoleName];
+      const tradeChannel = client.channels.cache.get(channelId);
 
-    // start giveaway
-    client.giveawaysManager.start(tradeChannel, {
-      // The giveaway duration
-      duration: ms(tradeDuration),
-      // The giveaway prize
-      prize: tradePrize,
-      // The giveaway Host
-      hostedBy: `<@${interaction.user.id}>`,
-      // The giveaway winner count
-      winnerCount: parseInt(tradeWinnerCount),
-      messages,
-    });
-    interaction.editReply({
-      content: `You dropped your shift in ${tradeChannel}!`,
-      ephemeral: true,
-    });
+      if (!tradeChannel) {
+        return interaction.reply({
+          content: "❌ | The corresponding channel could not be found.",
+          ephemeral: true,
+        });
+      }
+
+      await interaction.deferReply({ ephemeral: true });
+
+      // Start giveaway in the channel
+      client.giveawaysManager
+        .start(tradeChannel, {
+          duration: tradeDuration,
+          prize: tradePrize,
+          hostedBy: `<@${interaction.user.id}>`,
+          winnerCount: tradeWinnerCount,
+          messages,
+        })
+        .catch((error) => {
+          console.error("Error starting giveaway:", error);
+          interaction.editReply({
+            content:
+              "❌ | Failed to start the giveaway. Please try again later.",
+            ephemeral: true,
+          });
+        });
+
+      return interaction.editReply({
+        content: `You dropped your shift in ${tradeChannel}!`,
+        ephemeral: true,
+      });
+    } else {
+      const options = userRoles.map((role) => ({
+        label: role.name,
+        value: allowedRoles[role.name],
+      }));
+
+      const row = new MessageActionRow().addComponents(
+        new MessageSelectMenu()
+          .setCustomId("select-channel")
+          .setPlaceholder("Select a channel")
+          .addOptions(options)
+      );
+
+      await interaction.reply({
+        content: "Please select the channel where you want to post:",
+        components: [row],
+        ephemeral: true,
+      });
+
+      const filter = (i) =>
+        i.customId === "select-channel" && i.user.id === interaction.user.id;
+      const collector = interaction.channel.createMessageComponentCollector({
+        filter,
+        time: 60000,
+      });
+
+      collector.on("collect", async (i) => {
+        const channelId = i.values[0];
+        const tradeChannel = client.channels.cache.get(channelId);
+
+        if (!tradeChannel) {
+          return i.reply({
+            content: "❌ | The selected channel could not be found.",
+            ephemeral: true,
+          });
+        }
+
+        await i.update({
+          content: `You selected: ${tradeChannel.name}`,
+          components: [],
+          ephemeral: true,
+        });
+
+        client.giveawaysManager
+          .start(tradeChannel, {
+            duration: tradeDuration,
+            prize: tradePrize,
+            hostedBy: `<@${interaction.user.id}>`,
+            winnerCount: tradeWinnerCount,
+            messages,
+          })
+          .catch((error) => {
+            console.error("Error starting giveaway:", error);
+            interaction.editReply({
+              content:
+                "❌ | Failed to start the giveaway. Please try again later.",
+              ephemeral: true,
+            });
+          });
+
+        interaction.editReply({
+          content: `You dropped your shift in ${tradeChannel}!`,
+          ephemeral: true,
+        });
+      });
+    }
   },
 };
