@@ -40,7 +40,7 @@ module.exports = {
     const channelId = allowedRoles[userRole.name];
     const tradeChannel = client.channels.cache.get(channelId);
 
-    const tradeDuration = ms(1000 * 60 * 15);
+    const tradeDuration = ms(1000 * 60 * 45);
     const tradeWinnerCount = 1;
     const tradePrize = interaction.options.getString("shift");
 
