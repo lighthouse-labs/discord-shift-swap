@@ -25,7 +25,6 @@ module.exports = {
     const allowedRoles = {
       edops: "1267542964188479560",
       admin: "1266465782863368265",
-      edopslocal: "1329880889890570261",
     };
 
     // Check if the member has one of the allowed roles
