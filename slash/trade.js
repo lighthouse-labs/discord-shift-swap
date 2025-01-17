@@ -1,5 +1,5 @@
 const { MessageActionRow, MessageSelectMenu } = require("discord.js");
-const messages = require("../utils/message");
+const messages = require("../utils/message")("trade");
 const ms = require("ms");
 module.exports = {
   name: "trade",
@@ -107,7 +107,7 @@ module.exports = {
           ephemeral: true,
         });
 
-        const tradeDuration = ms(1000 * 60 * 15);
+        const tradeDuration = ms(1000 * 60 * 45);
         const tradeWinnerCount = 1;
         const tradePrize = interaction.options.getString("shift");
 
