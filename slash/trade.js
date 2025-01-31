@@ -43,8 +43,7 @@ module.exports = {
       const channelId = allowedRoles[userRoleName];
       const tradeChannel = client.channels.cache.get(channelId);
 
-      // Use tradeChannel to start the giveaway
-      const tradeDuration = ms(1000 * 60 * 15);
+      const tradeDuration = ms(1000 * 60 * 45);
       const tradeWinnerCount = 1;
       const tradePrize = interaction.options.getString("shift");
 
