@@ -1,6 +1,7 @@
 const config = require("../config.json");
 module.exports = (commandType) => {
   const isTI = commandType === "ti";
+
   return {
     giveaway: isTI ? "🎉 **TI REDO!** 🎉" : "🎉 **SHIFT TRADE!** 🎉",
     giveawayEnded: isTI
