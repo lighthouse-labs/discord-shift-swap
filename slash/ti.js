@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const messages = require("../utils/message")("ti");
 const ms = require("ms");
+
 module.exports = {
   name: "ti",
   description: "Post a TI redo",
@@ -41,7 +42,17 @@ module.exports = {
       });
     }
 
+    // Dynamically use the channel where the command is run
     const tradeChannel = interaction.channel;
+
+    // Ensure the channel is a valid text channel
+    if (!tradeChannel || tradeChannel.type !== "GUILD_TEXT") {
+      return interaction.reply({
+        content: "❌ | The channel is not a valid text channel.",
+        ephemeral: true,
+      });
+    }
+
     const tradePrize = interaction.options.getString("ti");
     const userDurationInput = interaction.options.getString("duration");
 
@@ -63,20 +74,25 @@ module.exports = {
 
     await interaction.deferReply({ ephemeral: true });
 
-    // start giveaway
+    // Make sure giveawaysManager is initialized
+    if (!client.giveawaysManager) {
+      return interaction.reply({
+        content: "❌ | Giveaways Manager is not set up properly.",
+        ephemeral: true,
+      });
+    }
+
+    // Start giveaway
     client.giveawaysManager.start(tradeChannel, {
-      // The giveaway duration
       duration: tradeDuration,
-      // The giveaway prize
       prize: tradePrize,
-      // The giveaway Host
       hostedBy: `<@${interaction.user.id}>`,
-      // The giveaway winner count
       winnerCount: parseInt(tradeWinnerCount),
       messages,
     });
+
     interaction.editReply({
-      content: `You dropped a ti in ${tradeChannel}!`,
+      content: `You dropped a TI redo in ${tradeChannel}!`,
       ephemeral: true,
     });
   },
