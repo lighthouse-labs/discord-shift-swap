@@ -19,9 +19,9 @@ module.exports = {
   run: async (client, interaction) => {
     // List of roles that are allowed to perform the action, using role ID as key
     const allowedRoles = {
-      "1266460843525148774": "1266459443852345475", // web role ID -> channel ID
-      "1266460754639327263": "1266459414878228598", // data role ID -> channel ID
-      "1266460877108936875": "1266459384779640893", // cyber role ID -> channel ID
+      "1271463163711459391": "1271462921683337319", // web role ID -> channel ID
+      "1271463177774698597": "1271462935574609960", // data role ID -> channel ID
+      "1271463139166388274": "1271462947478044793", // cyber role ID -> channel ID
     };
 
     // Find the role the user has and match it to the allowedRoles object by ID
