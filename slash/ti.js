@@ -21,8 +21,8 @@ module.exports = {
   run: async (client, interaction) => {
     // List of roles that are allowed to perform the action
     const allowedRoles = {
-      edops: "1267542964188479560",
-      admin: "1266465782863368265",
+      edops: "993594724982214800",
+      admin: "993594724982214802",
     };
     // Check if the member has one of the allowed roles
     const userRole = interaction.member.roles.cache.find((r) =>
