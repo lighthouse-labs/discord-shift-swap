@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const messages = require("../utils/message");
+const messages = require("../utils/message")("trade");
 const ms = require("ms");
 
 module.exports = {
